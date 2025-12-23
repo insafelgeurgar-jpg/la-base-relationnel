@@ -1,0 +1,14 @@
+أسماء واضحة للجداول والأعمدة
+
+تطبيق 1FN، 2FN، 3FN
+
+اختيار نوع بيانات مناسب لكل عمود
+
+استخدام PK وFK وIndex لتحسين الأداء
+ALTER TABLE utilisateur ADD INDEX (email);
+
+توثيق الجداول والأعمدة
+
+
+حفظ نسخة نهائية من قاعدة البيانات:
+mysqldump -u user -p BlogDB > BlogDB.sql

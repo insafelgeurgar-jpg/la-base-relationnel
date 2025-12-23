@@ -1,0 +1,28 @@
+Résumé مختصر – MCD و MLD
+
+🔹 MCD:
+هو رسم تخطيطي كنستعملوه قبل ما نكتبو أي حاجة فـ SQL.
+كنعرّفو فيه:
+
+les entités
+
+les relations
+
+les cardinalités (1-1, 1-N, N-N)
+
+🔹 MLD:
+هو تحويل MCD إلى Tables.
+كنحددو فيه:
+
+les tables
+
+primary key
+
+foreign key
+
+🔹 العلاقة بين MCD و MLD:
+كنحوّلو العلاقات:
+
+1-N → clé étrangère كتكون فالجهة N
+
+العلاقة كتتكتب: N-1

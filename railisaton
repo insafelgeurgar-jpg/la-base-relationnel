@@ -1,0 +1,86 @@
+MCD
+client
+id_client
+nom  
+prenom
+email
+telephone
+
+
+voiture
+ id_voiture
+ marque
+ modele
+
+Location
+id_location 
+date_debut 
+date_fin
+
+RELATION BYN lientite:
+client (1) -> (N) voiture
+
+Utilisateur (1) → (N) Location : كل مستخدم يمكن يكون عندو عدة إيجارات
+
+Voiture (1) → (N) Location : كل سيارة يمكن تكري عدة مرات
+KANHAWLO MN MCD N MLD:
+Client
+id_client PK
+nom
+prenom
+email
+telephone
+Voiture
+id_voiture PK
+marque
+modele
+Location
+id_location PK
+date_debut
+date_fin
+id_client FK → Client(id_client)
+id_voiture FK → Voiture(id_voiture)
+CREATE DATABASE IF NOT EXISTS LocationVoituresDB;
+USE LocationVoituresDB;
+CREATE TABLE IF NOT EXISTS Client (
+    id_client INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    prenom VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telephone VARCHAR(20)
+);
+
+CREATE TABLE IF NOT EXISTS Voiture (
+    id_voiture INT AUTO_INCREMENT PRIMARY KEY,
+    marque VARCHAR(50) NOT NULL,
+    modele VARCHAR(50) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS Location (
+    id_location INT AUTO_INCREMENT PRIMARY KEY,
+    date_debut DATE NOT NULL,
+    date_fin DATE NOT NULL,
+    id_client INT,
+    id_voiture INT,
+    FOREIGN KEY (id_client) REFERENCES Client(id_client),
+    FOREIGN KEY (id_voiture) REFERENCES Voiture(id_voiture)
+);
+
+--  Ajouter quelques clients
+INSERT INTO Client (nom, prenom, email, telephone)
+VALUES
+('Anwar', 'Ben', 'anwar@mail.com', '0612345678'),
+('Sara', 'Khalid', 'sara@mail.com', '0698765432');
+
+--  Ajouter quelques voitures
+INSERT INTO Voiture (marque, modele)
+VALUES
+('Toyota', 'Corolla'),
+('BMW', 'X5'),
+('Honda', 'Civic');
+
+--  Ajouter des locations
+INSERT INTO Location (date_debut, date_fin, id_client, id_voiture)
+VALUES
+('2025-12-23', '2025-12-25', 1, 1),
+('2025-12-24', '2025-12-26', 2, 2),
+('2025-12-26', '2025-12-28', 1, 3);

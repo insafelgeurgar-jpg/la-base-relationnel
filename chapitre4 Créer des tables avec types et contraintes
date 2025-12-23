@@ -1,0 +1,45 @@
+CREATE TABLE NomTable (
+  colonne1 TYPE CONTRAINTES,
+  colonne2 TYPE CONTRAINTES,
+  ...
+);
+2️⃣ Types de données شائعة
+INT → أعداد صحيحة
+
+VARCHAR(n) → نص قصير (n = طول أقصى)
+
+TEXT → نص طويل
+
+DATE → تاريخ
+
+BOOLEAN → صحيح/خطأ
+
+3️⃣ Constraints مهمة
+PRIMARY KEY → كل سجل متميز
+
+NOT NULL → ما يمكنش يكون فارغ
+
+UNIQUE → القيمة مختلفة لكل سجل
+
+AUTO_INCREMENT → يزيد الرقم تلقائياً
+
+FOREIGN KEY → يربط جدول بآخر
+
+4️⃣ Exemple – Blog
+Utilisateur
+
+sql
+Copier le code
+id INT AUTO_INCREMENT PRIMARY KEY
+nom VARCHAR(100) NOT NULL
+email VARCHAR(100) UNIQUE
+mot_de_passe VARCHAR(255) NOT NULL
+Article
+
+sql
+Copier le code
+id INT AUTO_INCREMENT PRIMARY KEY
+titre VARCHAR(150) NOT NULL
+contenu TEXT NOT NULL
+date_pub DATE
+id_utilisateur INT FOREIGN KEY REFERENCES Utilisateur(id)

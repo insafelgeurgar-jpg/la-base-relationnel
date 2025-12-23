@@ -1,0 +1,94 @@
+
+id-etulisateur(
+nom
+email 
+mote_de_passe
+)
+ARTICL(
+id_article
+titre
+contenu
+date_publication
+)
+commantaire(
+ id_commentaire
+contenu
+auteur
+date_commentaire
+)
+les relation :
+UTILISATEUR
+- id_utilisateur
+- nom
+- email
+- mot_de_passe
+
+     1
+     |
+     | 
+     |
+     N
+
+ARTICLE
+- id_article
+- titre
+- contenu
+- date_publication
+
+     1
+     |
+     | 
+     |
+     N
+
+COMMENTAIRE
+- id_commentaire
+- contenu
+- auteur
+- date_commentaire
+mmarhala tahwil mn MCD ----> MLD
+Utilisateur
+- id_utilisateur PK
+- nom
+- email
+- mot_de_passe
+Article
+- id_article PK
+- titre
+- contenu
+- date_publication
+- id_utilisateur FK → Utilisateur(id_utilisateur)
+Commentaire
+- id_commentaire PK
+- contenu
+- auteur
+- date_commentaire
+- id_article FK → Article(id_article)
+
+
+CREATE DATABASE IF NOT EXISTS BlogDB;
+USE BlogDB;
+CREATE TABLE IF NOT EXISTS Utilisateur (
+    id_utilisateur INT AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    mot_de_passe VARCHAR(255) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS Article (
+    id_article INT AUTO_INCREMENT PRIMARY KEY,
+    titre VARCHAR(150) NOT NULL,
+    contenu TEXT NOT NULL,
+    date_publication DATE,
+    id_utilisateur INT,
+    FOREIGN KEY (id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+);
+CREATE TABLE IF NOT EXISTS Commentaire (
+    id_commentaire INT AUTO_INCREMENT PRIMARY KEY,
+    contenu TEXT NOT NULL,
+    auteur VARCHAR(100),
+    date_commentaire DATE,
+    id_article INT,
+    FOREIGN KEY (id_article) REFERENCES Article(id_article)
+);
+
+

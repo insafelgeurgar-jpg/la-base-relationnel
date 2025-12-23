@@ -1,0 +1,39 @@
+ Résumé – Chapitre 2 : MCD / MLD
+ 
+
+نعرفو شنو هو MCD و MLD
+
+نقدر نرسم Modèle Conceptuel de Données
+
+نحولو لـ Modèle Logique de Données جاهز لـ SQL
+
+1 MCD
+
+رسم تخطيطي قبل أي SQL
+
+فيه:
+
+Entités (Ex: Utilisateur, Article, Commentaire)
+
+Attributs
+
+Relations + Cardinalités (1-1, 1-N, N-N)
+
+ مثال:
+
+Utilisateur (1) —— rédige —— Article (N)
+Article (1) —— reçoit —— Commentaire (N)
+
+ 2 MLD
+
+تحويل MCD → Tables + PK + FK
+
+PK (Primary Key) → يميّز كل سطر بوحدو
+
+FK (Foreign Key) → يربط table table أخرى حسب العلاقة
+
+ مثال:
+
+UTILISATEUR (id_user PK, nom, email, mot_de_passe)
+ARTICLE    (id_article PK, titre, contenu, date_pub, id_user FK)
+COMMENTAIRE(id_commentaire PK, contenu, auteur, date, id_article FK)
